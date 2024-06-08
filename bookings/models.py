@@ -14,7 +14,7 @@ class User(AbstractUser):
     user_type = models.CharField(max_length=20, choices=USER_CHOICES, default=USER)
 
     def __str__(self):
-        return f"{self.username} - {self.user_type}"
+        return f"{self.username}"
     
 class Flight(models.Model):
     flight_number = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

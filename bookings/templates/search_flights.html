@@ -33,20 +33,31 @@
         <input type="submit" value="Search">
     </form>
 
-
-    {% if bookings %}
-    <h2>Bookings for Selected Flight</h2>
-    {% for booking in bookings %}
-
+    {% if searched_flights %}
+    <h2>Search Results</h2>
+    {% for flight in searched_flights %}
     <div class="flight-box">
         <h3>Flight Details</h3>
-        <p>Flight ID: {{ booking.flight.flight_number }}</p>
-        <p>Departure Time: {{ booking.flight.departure_time }}</p>
+        <p>Flight ID: {{ flight.flight_number }}</p>
+        <p>Departure Time:{{flight.departure_date}} {{ flight.departure_time }}</p>
+        <p>Arrival Time:{{flight.arrival_date}} {{ flight.arrival_time }}</p>
+        <p>From Airport: {{ flight.from_airport }}</p>
+        <p>To Airport: {{ flight.to_airport }}</p>
+        <p>Seats Left: {{ flight.seats_left }}</p>
 
-        <h3>Booking ID: {{ booking.booking_id }}</h3>
-        <p>User: {{ booking.user }}</p>
-        <p>Booking Time: {{ booking.booking_time }}</p>
-        <p>Seat number: {{ booking.seat_number}}</p>
+        {% if bookings %}
+        <h3>Bookings for This Flight</h3>
+        {% for booking in bookings %}
+        {% if booking.flight_id == flight.flight_number %}
+        <div class="booking-details">
+            <h4>Booking ID: {{ booking.booking_id }}</h4>
+            <p>User: {{ booking.user }}</p>
+            <p>Booking Time: {{ booking.booking_time }}</p>
+            <p>Seat number: {{ booking.seat_number }}</p>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
     </div>
     {% endfor %}
     {% endif %}
