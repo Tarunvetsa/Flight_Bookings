@@ -14,10 +14,16 @@
         <h1>Your Bookings</h1>
         {% for booking in bookings %}
         <div class="booking">
-            <div class="top-left">Flight ID: {{ booking.flight.flight_number }}</div>
+            <div class="top-left"><h3>Flight Details</h3>
+                <h4>Flight: {{ booking.flight.flight_name }}</h4>
+                <p>Departure Time:{{booking.flight.departure_date}} {{ booking.flight.departure_time }}</p>
+                <p>Arrival Time:{{booking.flight.arrival_date}} {{ booking.flight.arrival_time }}</p>
+                <p>From Airport: {{ booking.flight.from_airport }}</p>
+                <p>To Airport: {{ booking.flight.to_airport }}</p>
+            </div>
             <div class="top-right">Username: {{ booking.user.username }}</div>
             <div class="booking-details">
-                <p>Departure Time: {{ booking.flight.departure_time }}</p>
+                
                 <p>Booking Time: {{ booking.booking_time }}</p>
                 <p>Seat Number: {{ booking.seat_number }}</p>
             </div>

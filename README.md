@@ -1,6 +1,6 @@
 <div align="center">
 
-# [Flight Ticket Booking App](https://github.com/Tarunvetsa/Flight_bookings)
+# [Flight Ticket Booking App](https://flight-bookings-290w.onrender.com/)
 </div>
 Flight Ticket Booking App is a web application designed for users to easily book flights and for administrators to manage flights and bookings.
 
@@ -62,4 +62,4 @@ python manage.py runserver
 
 > Then, the development server will be running on yourlocalhost at http://127.0.0.1:8000/
 
-----> Also, you can view the app at link [App](https://github.com/Tarunvetsa/Flight_bookings)
+----> Also, you can view the app at link [App](https://flight-bookings-290w.onrender.com/)
