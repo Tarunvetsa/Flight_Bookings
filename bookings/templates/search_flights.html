@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Flights</title>
+    <link rel="stylesheet" href="{% static 'search_flights.css' %}">
+</head>
+
+<body>
+    <h1>Search Flights</h1>
+    <form method="post" action="{% url 'search_flights' %}">
+        {% csrf_token %}
+        <label for="flight_id">Select Flight ID:</label>
+        <select name="flight_id" id="flight_id">
+            <option value="">All</option>
+            {% for flight in flights %}
+            {% if flight.flight_number == selected_flight_id %}
+            <option value="{{ flight.flight_number }}" selected>{{ flight.flight_number }}</option>
+            {% else %}
+            <option value="{{ flight.flight_number }}">{{ flight.flight_number }}</option>
+            {% endif %}
+            {% endfor %}
+        </select><br><br>
+
+        <label for="from_time">From:</label>
+        <input type="time" id="from_time" name="from_time">
+        <label for="to_time">To:</label>
+        <input type="time" id="to_time" name="to_time"><br><br>
+        <input type="submit" value="Search">
+    </form>
+
+
+    {% if bookings %}
+    <h2>Bookings for Selected Flight</h2>
+    {% for booking in bookings %}
+
+    <div class="flight-box">
+        <h3>Flight Details</h3>
+        <p>Flight ID: {{ booking.flight.flight_number }}</p>
+        <p>Departure Time: {{ booking.flight.departure_time }}</p>
+
+        <h3>Booking ID: {{ booking.booking_id }}</h3>
+        <p>User: {{ booking.user }}</p>
+        <p>Booking Time: {{ booking.booking_time }}</p>
+        <p>Seat number: {{ booking.seat_number}}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
+</body>
+
+</html>
