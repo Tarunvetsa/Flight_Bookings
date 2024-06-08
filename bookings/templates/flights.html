@@ -54,9 +54,12 @@
 
         {% for flight in flights %}
         <div class="flight-box">
-            <h3>Flight ID: {{ flight.flight_number }}</h3>
+            <h3>{{ flight.flight_name }}</h3>
+            <p>{{flight.from_airport}} to {{flight.to_airport}}</p>
             <p>Departure Date: {{ flight.departure_date }}</p>
             <p>Departure Time: {{ flight.departure_time }}</p>
+            <p>Arrival Date: {{ flight.arrival_date }}</p>
+            <p>Arrival Time: {{ flight.arrival_time }}</p>
             <p>Seats Left: {{flight.seats_left}}</p>
 
             {% if user.is_authenticated %}

@@ -18,8 +18,13 @@ class User(AbstractUser):
     
 class Flight(models.Model):
     flight_number = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    from_airport=models.CharField(max_length=100)
+    to_airport=models.CharField(max_length=100)
+    flight_name=models.CharField(max_length=200)
     departure_date=models.DateField()
     departure_time=models.TimeField()
+    arrival_date=models.DateField()
+    arrival_time=models.TimeField()
     seat_count=models.PositiveIntegerField(default=60)
     booked_seats=models.PositiveIntegerField(default=0)
     seats_left = models.IntegerField(default=60)
